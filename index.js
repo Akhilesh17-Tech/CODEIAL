@@ -3,6 +3,21 @@ const port = 8000; // default app run on port 80
 const path = require("path");
 const app = express();
 
+const mongoose = require("./config/mongoose");
+
+// setup static files folder
+
+app.use(express.static("./assets"));
+
+// setting up layouts
+const expressLayouts = require("express-ejs-layouts");
+app.use(expressLayouts);
+
+//extracting styles and scripts from sub pages into the layouts
+
+app.set("layout extractStyles", true);
+app.set("layout extractScripts", true);
+
 // use express router
 app.use("/", require("./routes"));
 
