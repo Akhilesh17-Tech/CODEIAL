@@ -1,10 +1,18 @@
 const express = require("express");
 const port = 8000; // default app run on port 80
 const path = require("path");
+const cookieParser = require("cookie-parser");
+
 // setup mongoDB
 const db = require("./config/mongoose");
 
 const app = express();
+
+// for post request urlencoded is required
+app.use(express.urlencoded());
+
+//use cookie parser it is a middleware
+app.use(cookieParser());
 
 // setup static files folder
 app.use(express.static("./assets"));
