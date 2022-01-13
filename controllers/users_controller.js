@@ -1,6 +1,9 @@
 //import model
-
 const User = require("../models/user");
+
+module.exports.profile = function (req, res) {
+  return res.render("user_profile", { title: "profile", });
+};
 
 // render the sign in page
 module.exports.signin = function (req, res) {
@@ -35,7 +38,7 @@ module.exports.create = function (req, res) {
           console.log("error in creating user while signing up ");
           return;
         }
-        res.redirect("/dusers/sign-in");
+        res.redirect("/users/sign-in");
       });
     } else {
       return res.redirect("back");
@@ -44,4 +47,6 @@ module.exports.create = function (req, res) {
 };
 
 // sign in and create a session for the user
-module.exports.createSession = function (req, res) {};
+module.exports.createSession = function (req, res) {
+  return res.redirect("/");
+};
