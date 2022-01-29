@@ -5,17 +5,6 @@ module.exports.profile = function (req, res) {
   return res.render("user_profile", { title: "profile" });
 };
 
-// render the sign in page
-module.exports.signin = function (req, res) {
-  // return res.end("<h1> User Profile </h1>");
-  if (req.isAuthenticated()) {
-    return res.redirect("/users/profile");
-  }
-  return res.render("user_sign_in", {
-    title: "Codeial | Sign-In",
-  });
-};
-
 // render the sign up page
 module.exports.signup = function (req, res) {
   // return res.end("<h1>user can edit his profile </h1>");
@@ -24,6 +13,17 @@ module.exports.signup = function (req, res) {
   }
   return res.render("user_sign_up", {
     title: "Codeial | Sign-Up",
+  });
+};
+
+// render the sign in page
+module.exports.signin = function (req, res) {
+  // return res.end("<h1> User Profile </h1>");
+  if (req.isAuthenticated()) {
+    return res.redirect("/users/profile");
+  }
+  return res.render("user_sign_in", {
+    title: "Codeial | Sign-In",
   });
 };
 
