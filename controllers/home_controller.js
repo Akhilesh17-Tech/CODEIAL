@@ -32,4 +32,35 @@ module.exports.home = function (req, res) {
     });
 };
 
-// module.exports.actionName = function(req, res){}
+// // async await for cleaner code structure with error handling
+
+// module.exports.home = async function (req, res) {
+//   try {
+//     let posts = await Post.find({})
+//       .populate("user")
+//       .populate({
+//         path: "comments",
+//         populate: {
+//           path: "user",
+//         },
+//       });
+
+//     let users = await User.find({});
+//     return res.render("home", {
+//       title: "Codeial | Home",
+//       posts: posts,
+//       all_users: users,
+//     });
+//   } catch (err) {
+//     console.log("Error : ", err);
+//   }
+// };
+
+// // module.exports.actionName = function(req, res){}
+
+// // using then
+// // post.find({}).populate("comment").then(function());
+
+// // using promises
+// //  let post = post.find({}).populate("comment").exec();
+// // post.then();
