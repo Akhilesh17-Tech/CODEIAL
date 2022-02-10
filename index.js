@@ -2,17 +2,26 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const app = express();
 const port = 8000; // default app run on port 80
-// setup mongoDB
+
+// layouts for code partitioning
 const expressLayouts = require("express-ejs-layouts");
+
+// setup mongoDB
 const db = require("./config/mongoose");
 
 // used for session cookies
 const session = require("express-session");
+
+// mongo store for permanet cookie store
 const MongoStore = require("connect-mongo");
 
 // setting up passport authentication
 const passport = require("passport");
 const passportLocal = require("./config/passport-local-strategy");
+
+// flash special area of the session used for storing message
+const flash = require("connect-flash");
+const customMware = require("./config/middleware");
 
 // for post request urlencoded is required
 app.use(express.urlencoded());
@@ -57,6 +66,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(passport.setAuthenticatedUser);
+
+app.use(flash());
+app.use(customMware.setFlash);
 
 // use express router
 app.use("/", require("./routes"));
