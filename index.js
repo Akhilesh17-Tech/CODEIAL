@@ -1,51 +1,35 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const app = express();
-const port = 8000; // default app run on port 80
-
-// layouts for code partitioning
+const port = 8000;
 const expressLayouts = require("express-ejs-layouts");
-
-// setup mongoDB
 const db = require("./config/mongoose");
 
-// used for session cookies
+// used for session cookie
 const session = require("express-session");
-
-// mongo store for permanet cookie store
-const MongoStore = require("connect-mongo");
-
-// setting up passport authentication
 const passport = require("passport");
 const passportLocal = require("./config/passport-local-strategy");
-
-// flash special area of the session used for storing message
+const passportJWT = require("./config/passport-jwt-strategy");
+const MongoStore = require("connect-mongo");
 const flash = require("connect-flash");
 const customMware = require("./config/middleware");
 
-// for post request urlencoded is required
 app.use(express.urlencoded());
-
-//use cookie parser it is a middleware
 app.use(cookieParser());
 
-// setup static files folder
 app.use(express.static("./assets"));
 // make the uploads path available to the browser
 app.use("/uploads", express.static(__dirname + "/uploads"));
 
-// setting up layouts
 app.use(expressLayouts);
-
-//extracting styles and scripts from sub pages into the layouts
+// extract style and scripts from sub pages into the layout
 app.set("layout extractStyles", true);
 app.set("layout extractScripts", true);
 
-// set up view engine
+// set up the view engine
 app.set("view engine", "ejs");
 app.set("views", "./views");
 
-// session and it's property
 // mongo store is used to store the session cookie in the db
 app.use(
   session({
@@ -66,9 +50,7 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
-
 app.use(passport.setAuthenticatedUser);
-
 app.use(flash());
 app.use(customMware.setFlash);
 
