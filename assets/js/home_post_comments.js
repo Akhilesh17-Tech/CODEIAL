@@ -13,7 +13,7 @@ class PostComments {
 
     this.createComment(postId);
 
-    let self = $(this);
+    let self = this;
     // call for all the existing comments
     $(" .delete-comment-button", this.postContainer).each(function () {
       self.deleteComment($(this));
@@ -24,7 +24,7 @@ class PostComments {
     let pSelf = this;
     this.newCommentForm.submit(function (e) {
       e.preventDefault();
-      let self = $(this);
+      let self = this;
 
       $.ajax({
         type: "post",

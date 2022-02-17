@@ -14,6 +14,7 @@ const MongoStore = require("connect-mongo");
 const flash = require("connect-flash");
 const customMware = require("./config/middleware");
 const passportGoogle = require("./config/passport-google-oauth2-strategy");
+const nodeMailer = require("./config/nodemailer");
 
 app.use(express.urlencoded());
 app.use(cookieParser());
