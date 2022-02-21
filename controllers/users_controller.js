@@ -165,29 +165,29 @@ module.exports.resetPassword = async function (req, res) {
   }
 };
 
-module.exports.updatePassword = async function (req, res) {
-  try {
-    let passwordToken = await PasswordToken.findOneAndUpdate(
-      { accessToken: req.params.access_token },
-      { isValid: false }
-    );
-    if (passwordToken.isValid) {
-      if (req.body.password != req.body.confirm_password) {
-        req.flash("error", "Password doesn't match!");
-        return res.redirect("back");
+module.exports.updatePassword = function (req, res) {
+  PasswordToken.findOneAndUpdate(
+    { accessToken: req.params.access_token },
+    { isValid: false },
+    function (err, passwordToken) {
+      if (passwordToken.isValid == true) {
+        if (req.body.password != req.body.confirm_password) {
+          req.flash("error", "Passwords don't match!");
+          return res.redirect("back");
+        }
+        User.findByIdAndUpdate(
+          passwordToken.user,
+          { password: req.body.password },
+          function (err, user) {
+            if (err) {
+              console.log("Error while resetting the password");
+              return;
+            }
+            req.flash("sucess", "Password updated successfully!");
+            return res.redirect("/users/sign-in");
+          }
+        );
       }
-      let user = User.findOneAndUpdate(passwordToken.user, {
-        password: req.body.password,
-      });
-      if (!user) {
-        console.log("Error while resetting the password");
-        return;
-      }
-      req.flash("sucess", "Password updated successfully!");
-      return res.redirect("/users/sign-in");
     }
-  } catch (err) {
-    console.log("Error in updating password", err);
-    return res.redirect("back");
-  }
+  );
 };
