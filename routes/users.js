@@ -26,9 +26,7 @@ router.post(
   passport.authenticate("local", { failureRedirect: "/users/sign-in" }),
   usersController.createSession
 );
-
 router.get("/sign-out", usersController.destroySession);
-
 router.get(
   "/auth/google",
   passport.authenticate("google", { scope: ["profile", "email"] })
@@ -38,5 +36,10 @@ router.get(
   passport.authenticate("google", { failureRedirect: "/users/sign-in" }),
   usersController.createSession
 );
+
+router.get("/forgot_password", usersController.forgotPassword);
+router.post("/create_reset_token", usersController.createResetPasswordToken);
+router.get("/reset_password/:access_token", usersController.resetPassword);
+router.post("/update-password/:access_token", usersController.updatePassword);
 
 module.exports = router;
