@@ -2,13 +2,8 @@
   color: white;
   background: grey;
   padding: 5px 10px;
+  height: 6%;
   display: flex;
-  justify-content: flex-start;
-}
-#layout-footer a {
-  color: white;
-  text-decoration: none;
-}
-#layout-footer .footer-nav ul {
-  list-style: none;
+  justify-content: center;
+  align-items: center;
 }

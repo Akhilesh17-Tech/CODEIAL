@@ -1,47 +1,68 @@
 <link rel="stylesheet" href="/css/home.css">
 
-<div id="home-container">
-    <section id="feed-posts">
-            <h4>Posts</h4>
-            <% if(locals.user){ %>
-            <form action="/posts/create" id="new-post-form" method="POST">
-                <textarea name="content" cols="30" rows="3" placeholder="Type Here..." required></textarea>
-                <input type="submit" value="Post">
-            </form>
-            <% } %>
-        
-            <div id="posts-list-container">
-                <ul>
-                    <% for(post of posts){ %>
-                        
-                    <%- include('_post') -%>
-                        
-                    <%} %>
-                </ul>
+<%- include('_header'); %>
+
+<div class="container">
+    <section class="codeial-people" id="user-friends">
+        <h3 class="people-heading">People on Codeial</h3>
+        <% for(u of all_users){%>
+        <div class="users">
+            <a href="/users/profile/<%= u.id %>"><%= u.name %></a>
+        </div>
+        <% } %>
+    </section>
+    <section id="feed-posts" class="home-container">
+        <% if(locals.user){ %>
+        <div class="post-container">
+            <h2 class="userName">Welcome, <%= locals.user.name%>!</h2>
+            <div class="form-container">
+                <form action="/posts/create" id="new-post-form" method="POST">
+                    <textarea name="content" rows="3" cols="30" placeholder="Post something intresting ...."
+                        required></textarea>
+                    <br>
+                    <button class="submit-btn" type="submit">Post</button>
+                </form>
             </div>
-        </section>
-        
-        
-        <section id="user-friends">
-            <h4>Friends</h4>
-            <% for(u of all_users){%>
-                <p>
-                    <a href="/users/profile/<%= u.id %>"><%= u.name %></a>
-                </p>
-            <% } %>
-        </section>
+        </div>
+        <% } %>
+
+        <div id="posts-list-container">
+            <ul class="post-ul">
+                <% for(post of posts){ %>
+
+                <%- include('_post') -%>
+
+                <%} %>
+            </ul>
+        </div>
+    </section>
+
+    <% if(locals.user){%>
+    <section class="friends-container">
+        <h4>Your Friends</h4>
+        <ul>
+            <li>Akhilesh</li>
+            <li>Akash</li>
+            <li>Deepak</li>
+        </ul>
+    </section>
+    <%}%>
 </div>
 
+
+
+
 <!-- importing this script for creating the comments -->
-<script src="/js/home_post_comments.js" ></script>
+<script src="/js/home_post_comments.js"></script>
 <script src="/js/home_posts.js"></script>
 
 <!-- CHANGE :: import the script file for toggle likes , also run it over for the alreadt present posts and comments on the page  -->
 
 <script src="js/toggle_likes.js"></script>
 <script>
-    $(".toggle-like-button").each(function(){
+    $(".toggle-like-button").each(function () {
         let self = this;
         let toggleLike = new ToggleLike(self);
     })
 </script>
+<%- include('_footer'); %>

@@ -15,10 +15,14 @@ module.exports.home = async function (req, res) {
         populate: {
           path: "likes",
         },
+        options: {
+          sort: { createdAt: -1 },
+        },
       })
-      .populate("comments")
       .populate("likes");
 
+    console.log(posts[0]);
+    
     let users = await User.find({});
 
     return res.render("home", {

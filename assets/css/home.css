@@ -1,14 +1,180 @@
-#home-container {
+.container {
+  min-height: 100vh;
+  max-height: auto;
   display: flex;
-}
-#feed-posts {
-  padding: 10px;
-  width: 70%;
+  justify-content: flex-start;
 }
 
-#user-friends {
-  width: 30%;
-  border-left: 1px solid gray;
+/* users on codeial start  */
+.codeial-people {
+  width: 15%;
+  border-right: 1px solid lightgray;
+}
+
+.people-heading {
+  /* border: 1px solid black; */
   padding: 10px;
-  height: 100vh;
+  background-color: lightgray;
+  font-size: 1.05rem;
+  font-weight: 900;
+  text-align: center;
+}
+
+.users {
+  border-bottom: 1px solid;
+  padding: 8px;
+  text-align: center;
+}
+
+.users a {
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+/* users on codeial end  */
+
+/* post container with post form and all post till now  */
+.home-container {
+  width: 65%;
+  border: 1px solid lightgray;
+}
+
+.post-container {
+  /* border: 1px solid black; */
+  width: 80%;
+  min-height: 25%;
+  max-height: auto;
+  margin: 25px auto;
+  box-shadow: 0px 0px 6px 2px gray;
+  border-radius: 5px;
+}
+.post-container .userName {
+  /* border: 1px solid; */
+  padding: 15px;
+}
+
+.post-container .form-container {
+  /* border: 1px solid; */
+  width: 90%;
+  height: 15%;
+  position: relative;
+  margin: auto;
+}
+.post-container textarea {
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  width: 100%;
+  height: 85%;
+  padding: 10px;
+  font-size: 1.2rem;
+  resize: none;
+  margin: auto;
+}
+
+.post-container textarea:focus {
+  outline: none;
+}
+
+.submit-btn {
+  border: 1px solid transparent;
+  border-radius: 5px;
+  float: right;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-top: 12px;
+  width: 14%;
+  padding: 8px;
+  background-color: green;
+  color: white;
+}
+
+#posts-list-container {
+  /* border: 1px solid black; */
+  width: 80%;
+  min-height: 25%;
+  max-height: auto;
+  margin: 25px auto;
+  box-shadow: 0px 0px 6px 2px gray;
+  border-radius: 5px;
+}
+.post-ul li {
+  list-style: none;
+}
+
+.post-card-header {
+  /* border: 1px solid red; */
+  width: 95%;
+  padding: 10px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-container img {
+  width: 35px;
+  height: 35px;
+  margin-right: 5px;
+  border-radius: 50%;
+}
+
+.post-card-header a {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: black;
+  text-decoration: none;
+}
+
+.post-content {
+  /* border: 1px solid saddlebrown; */
+  width: 100%;
+  font-size: 1.3rem;
+  font-weight: 400;
+  padding: 10px;
+}
+
+.likes-count {
+  /* border: 1px solid red; */
+  padding: 5px 10px;
+  color: rgb(80, 78, 78);
+}
+
+.likes-container {
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+  width: 100%;
+  margin: auto;
+  display: flex;
+}
+.likecom-btn {
+  width: 47%;
+  margin: auto;
+  text-align: center;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  transition: background-color 0.2s ease-in-out;
+  cursor: pointer;
+}
+.likecom-btn:hover {
+  background-color: lightgray;
+}
+
+.likecom-btn a {
+  text-decoration: none;
+  color: black;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+/* post home container end */
+
+.friends-container {
+  width: 20%;
+  border: 1px solid red;
 }

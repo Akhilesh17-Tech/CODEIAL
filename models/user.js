@@ -27,6 +27,12 @@ const userSchema = new mongoose.Schema(
         ref: "Friendship",
       },
     ],
+    posts: [
+      {
+        type: mongoose.Schema.Types.ObjectId, //refers to the post schema
+        ref: "Post",
+      },
+    ],
   },
   {
     timestamps: true,

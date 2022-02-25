@@ -1,35 +1,35 @@
 <header id="layout-header">
     <nav>
-        <div class="mini-logo">
-            <p>
-                <a href='/'>
-                    codeial
-                </a>
-            </p>
+        <div class="website-logo">
+            <i class="fas fa-users"></i>
+            <a href='/'>Codeial</a>
         </div>
-    
+
         <div class="auth-links">
             <ul>
                 <% if (locals.user){ %>
-                <li>
+                <li class="nav-btn clr">
+                    <a href="#"><i class="fas fa-bell"></i></a>
+                </li>
+                <li class="nav-btn clr">
                     <a href="/users/profile"><%= user.name %></a>
                 </li>
-                <li>
-                    <a href="/users/sign-out">Sign Out</a>
+                <li class="nav-btn">
+                    <a href="/users/sign-out"><i class='fas fa-sign-out-alt'></i> Sign Out</a>
                 </li>
                 <% }else{ %>
-                <li>
-                    <a href="/users/sign-in">Sign In</a>
+                <li class="nav-btn">
+                    <a href="/users/sign-up"><i class="fas fa-user"></i> Sign Up</a>
                 </li>
-                <li>
-                    <a href="/users/sign-up">Sign Up</a>
+                <li class="nav-btn">
+                    <a href="/users/sign-in"><i class="fas fa-sign-in-alt"></i> Login</a>
                 </li>
-        
+
                 <% } %>
             </ul>
         </div>
     </nav>
- 
+
 
 
 </header>

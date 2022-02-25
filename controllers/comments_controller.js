@@ -4,6 +4,7 @@ const commentsMailer = require("../mailers/comments_mailer");
 const queue = require("../config/kue");
 const commentEmailWorker = require("../workers/comment_email_worker");
 const Like = require("../models/like");
+
 module.exports.create = async function (req, res) {
   try {
     let post = await Post.findById(req.body.post);
@@ -80,7 +81,7 @@ module.exports.destroy = async function (req, res) {
       return res.redirect("back");
     }
   } catch (err) {
-    req.flash("error", err);
+    console.log("Error in destroying the comment!", err);
     return;
   }
 };
