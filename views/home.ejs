@@ -11,6 +11,7 @@
         </div>
         <% } %>
     </section>
+
     <section id="feed-posts" class="home-container">
         <% if(locals.user){ %>
         <div class="post-container">
@@ -27,6 +28,7 @@
         <% } %>
 
         <div id="posts-list-container">
+
             <ul class="post-ul">
                 <% for(post of posts){ %>
 
@@ -58,7 +60,7 @@
 
 <!-- CHANGE :: import the script file for toggle likes , also run it over for the alreadt present posts and comments on the page  -->
 
-<script src="js/toggle_likes.js"></script>
+<script src="/js/toggle_likes.js"></script>
 <script>
     $(".toggle-like-button").each(function () {
         let self = this;

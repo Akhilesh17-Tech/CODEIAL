@@ -41,5 +41,9 @@ router.get("/forgot_password", usersController.forgotPassword);
 router.post("/create_reset_token", usersController.createResetPasswordToken);
 router.get("/reset_password/:access_token", usersController.resetPassword);
 router.post("/update-password/:access_token", usersController.updatePassword);
+router.get("/send-friend-request/:id", usersController.sendFriendRequest);
+router.get("/accept-friend-request/:id", usersController.acceptFriendRequest);
+router.get("/reject-friend-request/:id", usersController.rejectFriendRequest);
+router.get("/remove-friend/:id", usersController.unfriend);
 
 module.exports = router;

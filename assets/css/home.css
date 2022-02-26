@@ -1,6 +1,4 @@
 .container {
-  min-height: 100vh;
-  max-height: auto;
   display: flex;
   justify-content: flex-start;
 }
@@ -8,6 +6,7 @@
 /* users on codeial start  */
 .codeial-people {
   width: 15%;
+  height: auto;
   border-right: 1px solid lightgray;
 }
 
@@ -37,14 +36,14 @@
 /* post container with post form and all post till now  */
 .home-container {
   width: 65%;
+  height: auto;
   border: 1px solid lightgray;
 }
 
 .post-container {
   /* border: 1px solid black; */
   width: 80%;
-  min-height: 25%;
-  max-height: auto;
+  height: 220px;
   margin: 25px auto;
   box-shadow: 0px 0px 6px 2px gray;
   border-radius: 5px;
@@ -57,7 +56,8 @@
 .post-container .form-container {
   /* border: 1px solid; */
   width: 90%;
-  height: 15%;
+  height: 100px;
+  max-height: 150px;
   position: relative;
   margin: auto;
 }
@@ -65,7 +65,6 @@
   border: 1px solid lightgray;
   border-radius: 5px;
   width: 100%;
-  height: 85%;
   padding: 10px;
   font-size: 1.2rem;
   resize: none;
@@ -89,10 +88,10 @@
   color: white;
 }
 
-#posts-list-container {
+#posts-list-container ul li {
   /* border: 1px solid black; */
   width: 80%;
-  min-height: 25%;
+  min-height: 60px;
   max-height: auto;
   margin: 25px auto;
   box-shadow: 0px 0px 6px 2px gray;
@@ -170,6 +169,50 @@
   color: black;
   font-size: 1.2rem;
   font-weight: 400;
+}
+
+.post-comments-list ul li {
+  width: 100%;
+  min-height: 50px;
+  border: 2px solid red;
+}
+
+/* post comment area */
+
+.post-comments {
+  /* margin-bottom: 15px; */
+  width: 60%;
+  margin: auto;
+  border: 1px solid transparent;
+}
+.post-comments form {
+  margin: 15px 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border: 0px solid transparent;
+}
+
+.post-comments input {
+  padding: 10px;
+  width: 70%;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+}
+
+.post-comments input:focus {
+  outline: none;
+}
+
+.post-comments button {
+  width: 28%;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: lightblue;
+  color: black;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border: none;
 }
 
 /* post home container end */

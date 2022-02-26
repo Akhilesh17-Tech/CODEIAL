@@ -21,16 +21,46 @@ const userSchema = new mongoose.Schema(
     avatar: {
       type: String,
     },
-    friendships: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Friendship",
-      },
-    ],
+    about: {
+      type: String,
+    },
+
     posts: [
       {
         type: mongoose.Schema.Types.ObjectId, //refers to the post schema
         ref: "Post",
+      },
+    ],
+
+    sentRequests: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
+    friends: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
+    recievedRequests: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
+    chatRooms: [
+      {
+        user: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User",
+        },
+
+        roomId: {
+          type: String,
+          required: true,
+        },
       },
     ],
   },

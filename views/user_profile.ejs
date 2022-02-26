@@ -1,22 +1,99 @@
         <link rel="stylesheet" href="/css/user_profile.css">
-        <h1>
-            Codeial / Profile Page
-        </h1>
-
-
-        <img src="<%= user.avatar %>" alt="<%= user.name %>" width="100">
-
         <% if(user.id == profile_user.id){ %>
-            <!-- if user matches then show the form -->
+
+        <div id="header-container">
+            <div id="cover-pic"></div>
+            <div id="profile-details">
+                <% if(user.avatar) { %>
+                <div id="profile-pic"><img src="<%= user.avatar %>" alt="<%= user.name %>"></div>
+                <% }else { %>
+                <div id="profile-pic"><img src="/images/avatar-1577909_1280.png" alt="<%= user.name %>"></div>
+                <% } %>
+                <div id="user-details">
+                    <div id="user-name"><%= user.name %></div>
+                    <% if(user.about) {%>
+                    <div id="user-about"><%= user.about %></div>
+                    <% } %>
+                </div>
+            </div>
+            <div id="edit-profile-button"><i class="fas fa-edit"></i>&nbsp;&nbsp;Edit Profile</div>
+        </div>
+
+        <!-- if user matches then show the form -->
+        <div id="edit-profile">
             <form action="/users/update/<%= profile_user.id %>" method="POST" enctype="multipart/form-data">
-                <input type="text" name="name" placeholder="Your Name" value="<%= profile_user.name %>" required>
-                <input type="email" name="email" placeholder="Your Email" value="<%= profile_user.email %>" required>
-                <input type="file" name="avatar" placeholder="Profile Picture"> 
-                <input type="submit"  value="Update">
+                <div id="edit-profile-div-1">
+                    <lable for="name">Name</lable>
+                    <input type="text" id="name" name="name" placeholder="Your Name" value="<%= profile_user.name %>"
+                        required>
+                    <lable for="name">E-mail</lable>
+                    <input type="email" id="email" name="email" placeholder="Your Email"
+                        value="<%= profile_user.email %>" required>
+                </div>
+                <div id="edit-profile-div-2">
+                    <lable for="about">About</lable>
+                    <input type="text" id="about" name="about" placeholder="Write something about yourself">
+                </div>
+                <div id="edit-profile-div-3">
+                    <lable for="name">Profile Picture</lable>
+                    <input type="file" id="avatar" name="avatar" placeholder="Profile Picture">
+                </div>
+
+                <div id="buttons">
+                    <button type="submit" value="Update">Submit</button>
+                    <div id="cancel-button">Cancel</div>
+                </div>
             </form>
-            
-        <%}else{%>    
-            <!-- else show only the profile info -->
-            <p><%= profile_user.name %></p>
-            <p><%= profile_user.email %></p>
-        <%} %>
+        </div>
+        <%}else{%>
+        <!--Else show profile info only-->
+        <div id="header-container">
+            <div id="cover-pic"></div>
+            <div id="profile-details">
+                <% if(profile_user.avatar) { %>
+                <div id="profile-pic"><img src="<%= profile_user.avatar %>" alt="<%= profile_user.name %>"></div>
+                <% }else { %>
+                <div id="profile-pic"><img src="/images/default-avatar.jpg" alt="<%= profile_user.name %>"></div>
+                <% } %>
+                <div id="user-details">
+                    <div id="user-name"><%= profile_user.name %></div>
+                    <% if(profile_user.about) {%>
+                    <div id="user-about"><%= profile_user.about %></div>
+                    <% } %>
+                </div>
+            </div>
+            <% if(isFriend) { %>
+            <div id="follow-user-button" style="background-color: rgb(224, 34, 0);"><a
+                    href="/users/remove-friend/<%= profile_user.id %>">Unfriend</a></div>
+            <% }else if(acceptOrRejectRequest){ %>
+            <div id="follow-user-button"><a href="/users/accept-friend-request/<%= profile_user.id %>"><i
+                        class="fas fa-check-circle"></i></a></div>
+            <div id="follow-user-button" style="background-color: rgb(224, 34, 0);"><a
+                    href="/users/reject-friend-request/<%= profile_user.id %>"><i class="fas fa-times-circle"></i></a>
+            </div>
+            <% }else if(awaitingResponse){ %>
+            <div id="follow-user-button" style="background-color: rgb(250, 212, 0);"><a href="">Request Sent</a></div>
+            <%} else { %>
+            <div id="follow-user-button"><a href="/users/send-friend-request/<%= profile_user.id %>">Add Friend</a>
+            </div>
+            <% } %>
+
+        </div>
+        <% } %>
+
+
+
+
+
+        <% if(user.id == profile_user.id) { %>
+        <script>
+            let editButton = document.getElementById('edit-profile-button');
+            editButton.addEventListener('click', function () {
+                document.getElementById('edit-profile').style.display = 'block';
+            });
+            let cancelButton = document.getElementById('cancel-button');
+            cancelButton.addEventListener('click', function () {
+                document.getElementById('edit-profile').style.display = 'none';
+            });
+        </script>
+        <% } %>

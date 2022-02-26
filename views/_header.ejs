@@ -9,7 +9,9 @@
             <ul>
                 <% if (locals.user){ %>
                 <li class="nav-btn clr">
-                    <a href="#"><i class="fas fa-bell"></i></a>
+                    <% for(user of locals.user.recievedRequests){%>
+                    <a href="/users/profile/<%= user %>"><i class="fas fa-bell"></i><%= user %></a>
+                    <%}%>
                 </li>
                 <li class="nav-btn clr">
                     <a href="/users/profile"><%= user.name %></a>

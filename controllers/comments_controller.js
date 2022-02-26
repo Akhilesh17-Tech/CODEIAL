@@ -19,21 +19,23 @@ module.exports.create = async function (req, res) {
       post.comments.push(comment);
       post.save();
 
-      comment = await comment.populate("user", "name email");
+      comment = await comment.populate("user", "name email avatar");
       // commentsMailer.newComment(comment);
+
       let job = queue.create("emails", comment).save(function (err) {
         if (err) {
-          console.log("error in creating a queue", err);
+          console.log("Error in sending to the queue", err);
           return;
         }
         console.log("job enqueued", job.id);
       });
+
       if (req.xhr) {
         return res.status(200).json({
           data: {
             comment: comment,
           },
-          message: "Post created!",
+          message: "comment created!",
         });
       }
 
@@ -81,7 +83,7 @@ module.exports.destroy = async function (req, res) {
       return res.redirect("back");
     }
   } catch (err) {
-    console.log("Error in destroying the comment!", err);
+    req.flash("error", err);
     return;
   }
 };
