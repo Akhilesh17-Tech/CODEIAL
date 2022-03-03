@@ -1,6 +1,7 @@
 .container {
   display: flex;
   justify-content: flex-start;
+  min-height: 100%;
 }
 
 /* users on codeial start  */
@@ -174,7 +175,7 @@
 .post-comments-list ul li {
   width: 100%;
   min-height: 50px;
-  border: 2px solid red;
+  /* border: 2px solid red; */
 }
 
 /* post comment area */
@@ -215,6 +216,54 @@
   border: none;
 }
 
+/* comment section  */
+
+.comment-card-header {
+  width: 95%;
+  padding: 10px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-user-container {
+  display: flex;
+}
+
+.comment-content {
+  width: 90%;
+  margin: auto;
+  background-color: rgb(194, 197, 197);
+  border-radius: 8px;
+  padding: 5px;
+}
+
+.comment-card-header a {
+  text-decoration: none;
+  color: black;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.comment-user-container img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.comment-like {
+  width: 80%;
+  margin: 5px auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  /* border: 1px solid; */
+}
+
+.comment-like a {
+  text-decoration: none;
+  color: black;
+}
 /* post home container end */
 
 .friends-container {

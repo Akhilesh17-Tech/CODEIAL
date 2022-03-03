@@ -10,13 +10,13 @@
                 <% if (locals.user){ %>
                 <li class="nav-btn clr">
                     <% for(user of locals.user.recievedRequests){%>
-                    <a href="/users/profile/<%= user %>"><i class="fas fa-bell"></i><%= user %></a>
+                    <a href="/users/profile/<%= user.user._id %>"><i class="fas fa-bell"></i><%= user %></a>
                     <%}%>
                 </li>
                 <li class="nav-btn clr">
                     <a href="/users/profile"><%= user.name %></a>
                 </li>
-                <li class="nav-btn">
+                <li class=" nav-btn">
                     <a href="/users/sign-out"><i class='fas fa-sign-out-alt'></i> Sign Out</a>
                 </li>
                 <% }else{ %>
