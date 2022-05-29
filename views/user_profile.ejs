@@ -9,7 +9,7 @@
                 <% if(user.avatar) { %>
                 <div id="profile-pic"><img src="<%= user.avatar %>" alt="<%= user.name %>"></div>
                 <% }else { %>
-                <div id="profile-pic"><img src="/images/avatar-1577909_1280.png" alt="<%= user.name %>"></div>
+                <div id="profile-pic"><img src="/images/default-avatar.jpg" alt="<%= user.name %>"></div>
                 <% } %>
                 <div id="user-details">
                     <div id="user-name"><%= user.name %></div>
@@ -22,28 +22,42 @@
         </div>
 
         <!-- if user matches then show the form -->
-        <div id="edit-profile">
+        <div id="edit-profile" class="profile-container">
             <form action="/users/update/<%= profile_user.id %>" method="POST" enctype="multipart/form-data">
-                <div id="edit-profile-div-1">
-                    <lable for="name">Name</lable>
-                    <input type="text" id="name" name="name" placeholder="Your Name" value="<%= profile_user.name %>"
-                        required>
-                    <lable for="name">E-mail</lable>
-                    <input type="email" id="email" name="email" placeholder="Your Email"
-                        value="<%= profile_user.email %>" required>
-                </div>
-                <div id="edit-profile-div-2">
-                    <lable for="about">About</lable>
-                    <input type="text" id="about" name="about" placeholder="Write something about yourself">
-                </div>
-                <div id="edit-profile-div-3">
-                    <lable for="name">Profile Picture</lable>
-                    <input type="file" id="avatar" name="avatar" placeholder="Profile Picture">
-                </div>
+                <div id="edit-profile-div-1" class="form-container">
+                    <div class="comn">
+                        <div>
+                            <lable for="name">Name</lable>
+                        </div>
+                        <input type="text" id="name" name="name" placeholder="Your Name"
+                            value="<%= profile_user.name %>" required>
+                    </div>
 
-                <div id="buttons">
-                    <button type="submit" value="Update">Submit</button>
-                    <div id="cancel-button">Cancel</div>
+                    <div class="comn">
+                        <div>
+                            <lable for="name">E-mail</lable>
+                        </div>
+                        <input type="email" id="email" name="email" placeholder="Your Email"
+                            value="<%= profile_user.email %>" required>
+                    </div>
+
+                    <div class="comn">
+                        <div>
+                            <lable for="about">About</lable>
+                        </div>
+                        <input type="text" id="about" name="about" placeholder="Write something about yourself">
+                    </div>
+
+                    <div class="comn">
+                        <div>
+                            <lable for="name">Profile Picture</lable>
+                            <input type="file" id="avatar" name="avatar" placeholder="Profile Picture">
+                        </div>
+                    </div>
+                </div>
+                <div id="buttons" class="buttons">
+                    <button type="submit" class="sub-btn" value="Update">Submit</button>
+                    <div id="cancel-button" class="cnl-btn">Cancel</div>
                 </div>
             </form>
         </div>

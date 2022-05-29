@@ -270,7 +270,23 @@
 .friends-container {
   margin-left: auto;
   width: 15%;
-  /* border: 1px solid lightgray; */
   text-align: center;
-  right: auto;
+}
+
+.friends-container .title {
+  width: 100%;
+  background-color: lightgray;
+  padding: 10px 0;
+  margin-bottom: 10px;
+}
+
+.user-friends-list {
+  width: 100%;
+  border-bottom: 1px solid lightgray;
+  margin-bottom: 10px;
+}
+
+.user-friends-list a {
+  text-decoration: none;
+  font-size: 20px;
 }

@@ -14,7 +14,7 @@ module.exports.home = async function (req, res) {
           path: 'user',
         },
         options: {
-          sort: { createdAt: -1 },
+          // sort: { createdAt: -1 },
         },
       })
       .populate('likes');

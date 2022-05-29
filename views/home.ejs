@@ -43,7 +43,7 @@
 
     <% if(locals.user){%>
     <section class="friends-container">
-        <h4>Your Friends</h4>
+        <h4 class="title">Your Friends</h4>
         <% for(u of addedFriends) {%>
         <div class="user-friends-list"><a href="/users/profile/<%= u._id %>"><%= u.name %></a></div>
         <% } %>

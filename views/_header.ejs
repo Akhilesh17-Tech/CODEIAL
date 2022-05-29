@@ -15,8 +15,11 @@
                         </div>
                         <div class="notifications">
                             <% for(user of locals.user.recievedRequests) { %>
+
                             <div class="notification"><a href="/users/profile/<%= user %>"
-                                    style="color: black; text-decoration: underline;"></style>Someone</a> sent you a
+                                    style="color: black; text-decoration: underline;"></style>someone</a>
+                                sent
+                                you a
                                 friend request!</div>
                             <% } %>
                         </div>
@@ -24,11 +27,18 @@
                 </li>
                 <li class="nav-btn clr">
                     <span id="notification-bell"><i class="fas fa-bell"></i></span>&emsp;&emsp;
-
                 </li>
                 <li class="nav-btn clr">
-                    <a href="/users/profile"><%= user.name %></a>
-
+                    <span>
+                        <% if(user.avatar) { %>
+                        <div id="profile-pic"><img src="<%= user.avatar %>" alt="<%= user.name %>"></div>
+                        <% }else { %>
+                        <div id="profile-pic"><img src="/images/default-avatar.jpg" alt="<%= user.name %>">
+                        </div>
+                        <% } %></span>
+                </li>
+                <li class="nav-btn clr">
+                    <div href="#"><%= user.name %></div>
                 </li>
                 <li class=" nav-btn ">
                     <a href="/users/sign-out"><i class='fas fa-sign-out-alt'></i> Sign Out</a>
