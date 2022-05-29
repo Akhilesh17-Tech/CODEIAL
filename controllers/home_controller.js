@@ -13,9 +13,6 @@ module.exports.home = async function (req, res) {
         populate: {
           path: 'user',
         },
-        // populate: {
-        //   path: "likes",
-        // },
         options: {
           sort: { createdAt: -1 },
         },
@@ -23,11 +20,23 @@ module.exports.home = async function (req, res) {
       .populate('likes');
 
     let users = await User.find({});
-
+    let curr_user;
+    friendshipUser = [];
+    if (req.user) {
+      curr_user = await User.findById(req.user._id);
+      for (let uid of curr_user.friends) {
+        let friendsUser = await User.findById(uid);
+        friendshipUser.push(friendsUser);
+      }
+    } else {
+      friendsUser = [];
+    }
     return res.render('home', {
       title: 'Codeial | Home',
       posts: posts,
       all_users: users,
+      curr_user: curr_user,
+      addedFriends: friendshipUser,
     });
   } catch (err) {
     console.log('Error', err);
@@ -36,10 +45,17 @@ module.exports.home = async function (req, res) {
 };
 
 // module.exports.actionName = function(req, res){}
-
 // using then
 // Post.find({}).populate('comments').then(function());
-
 // let posts = Post.find({}).populate('comments').exec();
-
 // posts.then()
+
+//  .populate({
+//       path: 'friends',
+//     })
+//     .populate({
+//       path: 'chatRooms',
+//       populate: {
+//         path: 'user',
+//       },
+//     });

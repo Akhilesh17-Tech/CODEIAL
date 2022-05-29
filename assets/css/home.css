@@ -2,6 +2,7 @@
   display: flex;
   justify-content: flex-start;
   min-height: 100%;
+  /* border: 2px solid red; */
 }
 
 /* users on codeial start  */
@@ -36,7 +37,7 @@
 
 /* post container with post form and all post till now  */
 .home-container {
-  width: 65%;
+  width: 70%;
   height: auto;
   border: 1px solid lightgray;
 }
@@ -267,6 +268,9 @@
 /* post home container end */
 
 .friends-container {
-  width: 20%;
-  border: 1px solid red;
+  margin-left: auto;
+  width: 15%;
+  /* border: 1px solid lightgray; */
+  text-align: center;
+  right: auto;
 }

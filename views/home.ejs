@@ -1,9 +1,10 @@
 <link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" href="/css/chat_box.css">
 
 <%- include('_header'); %>
 
 <div class="container">
-    
+
     <section class="codeial-people" id="user-friends">
         <h3 class="people-heading">People on Codeial</h3>
         <% for(u of all_users){%>
@@ -43,13 +44,14 @@
     <% if(locals.user){%>
     <section class="friends-container">
         <h4>Your Friends</h4>
-        <ul>
-            <li>Akhilesh</li>
-            <li>Akash</li>
-            <li>Deepak</li>
-        </ul>
+        <% for(u of addedFriends) {%>
+        <div class="user-friends-list"><a href="/users/profile/<%= u._id %>"><%= u.name %></a></div>
+        <% } %>
     </section>
     <%}%>
+
+
+     <%- include('_chat_box') -%>
 </div>
 
 
@@ -58,6 +60,7 @@
 <!-- importing this script for creating the comments -->
 <script src="/js/home_post_comments.js"></script>
 <script src="/js/home_posts.js"></script>
+<script src="/js/chat_engine.js"></script>
 
 <!-- CHANGE :: import the script file for toggle likes , also run it over for the alreadt present posts and comments on the page  -->
 
@@ -68,4 +71,14 @@
         let toggleLike = new ToggleLike(self);
     })
 </script>
-<%- include('_footer'); %>
+
+<script type="text/JavaScript" src=" https://MomentJS.com/downloads/moment.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js"></script>
+<% if (locals.user){ %>
+<script>
+    new ChatEngine('user-chat-box', '<%= locals.user.email %>')
+</script>
+<% } %>
+
+
+<%- include('_footer.ejs') -%>

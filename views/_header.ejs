@@ -4,19 +4,33 @@
             <i class="fas fa-users"></i>
             <a href='/'>Codeial</a>
         </div>
-
         <div class="auth-links">
             <ul>
                 <% if (locals.user){ %>
                 <li class="nav-btn clr">
-                    <% for(user of locals.user.recievedRequests){%>
-                    <a href="/users/profile/<%= user.user._id %>"><i class="fas fa-bell"></i><%= user %></a>
-                    <%}%>
+                    <div id="notification-dropdown">
+                        <div id="notification-dropdown-header">
+                            <div>Notifications</div>
+                            <div><i class="fas fa-times"></i></div>
+                        </div>
+                        <div class="notifications">
+                            <% for(user of locals.user.recievedRequests) { %>
+                            <div class="notification"><a href="/users/profile/<%= user %>"
+                                    style="color: black; text-decoration: underline;"></style>Someone</a> sent you a
+                                friend request!</div>
+                            <% } %>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-btn clr">
+                    <span id="notification-bell"><i class="fas fa-bell"></i></span>&emsp;&emsp;
+
                 </li>
                 <li class="nav-btn clr">
                     <a href="/users/profile"><%= user.name %></a>
+
                 </li>
-                <li class=" nav-btn">
+                <li class=" nav-btn ">
                     <a href="/users/sign-out"><i class='fas fa-sign-out-alt'></i> Sign Out</a>
                 </li>
                 <% }else{ %>
@@ -31,7 +45,18 @@
             </ul>
         </div>
     </nav>
-
-
-
 </header>
+
+<script>
+    $('.dropdown').click(function (e) {
+        $('.dropdown-content').css('display', 'block');
+    });
+    $('#notification-bell').click(function () {
+        $('#notification-dropdown').fadeIn();
+    });
+    $('body').click(function (e) {
+        if (e.target.classList[1] != 'fa-bell') {
+            $('#notification-dropdown').fadeOut();
+        }
+    })
+</script>

@@ -28,33 +28,33 @@ const userSchema = new mongoose.Schema(
     posts: [
       {
         type: mongoose.Schema.Types.ObjectId, //refers to the post schema
-        ref: "Post",
+        ref: 'Post',
       },
     ],
 
     sentRequests: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
+        ref: 'User',
       },
     ],
     friends: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
+        ref: 'Friendship',
       },
     ],
     recievedRequests: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
+        ref: 'User',
       },
     ],
     chatRooms: [
       {
         user: {
           type: mongoose.Schema.Types.ObjectId,
-          ref: "User",
+          ref: 'User',
         },
 
         roomId: {

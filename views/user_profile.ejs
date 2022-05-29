@@ -65,25 +65,34 @@
                 </div>
             </div>
             <% if(isFriend) { %>
-            <div id="follow-user-button" style="background-color: rgb(224, 34, 0);"><a
+            <div id="follow-user-button" class="req-btn"><a
                     href="/users/remove-friend/<%= profile_user.id %>">Unfriend</a></div>
             <% }else if(acceptOrRejectRequest){ %>
-            <div id="follow-user-button"><a href="/users/accept-friend-request/<%= profile_user.id %>"><i
-                        class="fas fa-check-circle"></i></a></div>
-            <div id="follow-user-button" style="background-color: rgb(224, 34, 0);"><a
-                    href="/users/reject-friend-request/<%= profile_user.id %>"><i class="fas fa-times-circle"></i></a>
+            <div class="req-btn-container">
+                <div id="follow-user-button" class="r-btn-accept">
+                    <a href="/users/accept-friend-request/<%= profile_user.id %>"><i class="fas fa-check-circle">Accept
+                            Request</i>
+                    </a>
+                </div>
+                <div id="follow-user-button" class="r-btn-reject">
+                    <a href="/users/reject-friend-request/<%= profile_user.id %>"><i class="fas fa-times-circle">Reject
+                            Request</i>
+                    </a>
+                </div>
             </div>
+
             <% }else if(awaitingResponse){ %>
-            <div id="follow-user-button" style="background-color: rgb(250, 212, 0);"><a href="">Request Sent</a></div>
+            <div id="follow-user-button" class="req-btn">
+                <a href="">Request Sent</a>
+            </div>
             <%} else { %>
-            <div id="follow-user-button"><a href="/users/send-friend-request/<%= profile_user.id %>">Add Friend</a>
+            <div id="follow-user-button" class="req-btn"><a href="/users/send-friend-request/<%= profile_user.id %>">Add
+                    Friend</a>
             </div>
             <% } %>
 
         </div>
         <% } %>
-
-
 
 
 

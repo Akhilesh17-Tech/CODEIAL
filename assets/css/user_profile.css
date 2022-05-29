@@ -93,3 +93,55 @@ body {
   margin: 15px;
   border: 1px solid;
 }
+
+.req-btn {
+  text-align: center;
+  font-size: 30px;
+  border: 1px solid transparent;
+  width: 10%;
+  margin: auto;
+  background-color: rgb(48, 202, 143);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.req-btn a {
+  text-decoration: none;
+  color: white;
+}
+
+.req-btn-container {
+  border: 1px solid red;
+  width: 15%;
+  margin: 15px auto;
+  padding: 15px;
+}
+.req-btn-container {
+  border: 1px solid red;
+  width: 15%;
+  margin: auto;
+}
+
+.r-btn-accept {
+  /* border: 1px solid red; */
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 15px;
+  background-color: rgb(9, 87, 33);
+}
+
+.r-btn-accept a {
+  color: white;
+}
+
+.r-btn-reject {
+  /* border: 1px solid red; */
+  margin: 10px 0;
+  padding: 15px;
+  color: white;
+  background-color: red;
+  border-radius: 15px;
+}
+.r-btn-reject a {
+  color: white;
+}

@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const Message = require('../models/message');
 const fs = require('fs');
 const path = require('path');
 const PasswordToken = require('../models/reset_password_token');
@@ -133,11 +134,14 @@ module.exports.createSession = function (req, res) {
   return res.redirect('/');
 };
 
-module.exports.destroySession = function (req, res) {
-  req.logout();
-  req.flash('success', 'You have logged out!');
-
-  return res.redirect('/');
+module.exports.destroySession = function (req, res, next) {
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    req.flash('success', 'You have logged out!');
+    return res.redirect('/');
+  });
 };
 
 module.exports.forgotPassword = function (req, res) {
