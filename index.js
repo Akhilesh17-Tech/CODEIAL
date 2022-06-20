@@ -2,7 +2,8 @@ const express = require('express');
 const request = require('request');
 const cookieParser = require('cookie-parser');
 const app = express();
-const port = 8000;
+require('dotenv').config();
+const port = process.env.PORT || 8000;
 const expressLayouts = require('express-ejs-layouts');
 const db = require('./config/mongoose');
 const cors = require('cors');
@@ -55,7 +56,7 @@ app.use(
       maxAge: 1000 * 60 * 100,
     },
     store: MongoStore.create({
-      mongoUrl: 'mongodb://localhost/codeial_development',
+      mongoUrl: `mongodb+srv://akhi123:${process.env.DATABASE_PASS}@codeial-social.fkoxkml.mongodb.net/${process.env.DATABASE_NAME}?retryWrites=true&w=majority`,
       autoRemove: 'disabled',
     }),
   })

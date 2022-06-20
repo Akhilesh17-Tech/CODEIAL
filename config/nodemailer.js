@@ -5,11 +5,11 @@ const ejs = require('ejs');
 let transporter = nodemailer.createTransport({
   service: 'gmail',
   host: 'smtp.gmail.com',
-  port: 465,
+  port: 587,
   secure: true,
   auth: {
     user: 'akhilsdevelopment@gmail.com',
-    pass: 'vqsmhpbhmixqynwb',
+    pass: process.env.PASS,
   },
 });
 
